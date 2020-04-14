@@ -11,6 +11,12 @@
       "username": "Dan",
       "email": "mo@ma.com",
       "password": "xxxxxxxxxxxxxxxxxxxxx"
+    },
+    {
+      "email": "Brad@TierStrategies.com",
+      "userName": "Brad",
+      "password": "x",
+      "id": 3
     }
   ],
   "news": [
