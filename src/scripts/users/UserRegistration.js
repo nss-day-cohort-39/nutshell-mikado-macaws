@@ -2,7 +2,6 @@ import { saveUsers, useUsers } from "./UsersDataProvider.js";
 
 const registrationForm = document.querySelector(".register");
 const eventHub = document.querySelector(".container");
-const users = useUsers();
 
 eventHub.addEventListener("getRegisterClicked", (CustomEvent) => {
   const RegisterForm = () => {
@@ -61,8 +60,15 @@ registrationForm.addEventListener("click", (clickEvent) => {
           password: password,
         };
         // Change API state and application state
-        saveUsers(newUserRegistered);
-        sessionStorage.setItem("activeUser", newUserRegistered.id);
+        saveUsers(newUserRegistered).then(() => {
+          const users = useUsers();
+          const newUser = users.find(
+            (user) =>
+              user.email === newUserRegistered.email &&
+              user.password === newUserRegistered.password
+          );
+          sessionStorage.setItem("activeUser", newUser.id);
+        });
 
         const userRegistered = new CustomEvent("userRegistered");
         eventHub.dispatchEvent(userRegistered);

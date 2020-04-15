@@ -37,16 +37,10 @@
       "id": 6
     },
     {
-      "userName": "",
-      "email": "bobby@hill.com",
-      "password": "333",
+      "userName": "madi",
+      "email": "madi@pepper.com",
+      "password": "pep",
       "id": 7
-    },
-    {
-      "userName": "username",
-      "email": "billy@bob.com",
-      "password": "k",
-      "id": 8
     }
   ],
   "news": [
