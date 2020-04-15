@@ -1,7 +1,8 @@
-import { saveUsers } from "./UsersDataProvider.js";
+import { saveUsers, useUsers } from "./UsersDataProvider.js";
 
 const registrationForm = document.querySelector(".register");
 const eventHub = document.querySelector(".container");
+const users = useUsers();
 
 eventHub.addEventListener("getRegisterClicked", (CustomEvent) => {
   const RegisterForm = () => {
@@ -18,10 +19,10 @@ eventHub.addEventListener("getRegisterClicked", (CustomEvent) => {
             <input type="text" id="userNameRegister"></input>
             
             <label for="user_password">Password:</label>
-            <input type="text" id="userPassRegister"></input>
+            <input type="password" id="userPassRegister"></input>
             
             <label for="user_password_confirm">Confirm Password:</label>
-            <input type="text" id="userPassConfirm"></input>
+            <input type="password" id="userPassConfirm"></input>
             
             
             </fieldset> 
@@ -41,13 +42,37 @@ registrationForm.addEventListener("click", (clickEvent) => {
     const email = document.querySelector("#userEmail").value;
     const userName = document.querySelector("#userNameRegister").value;
     const password = document.querySelector("#userPassRegister").value;
-    // Make a new object representation of user
-    const newUserRegistered = {
-      userName: userName,
-      email: email,
-      password: password,
-    };
-    // Change API state and application state
-    saveUsers(newUserRegistered);
+    const confirmPassword = document.querySelector("#userPassConfirm").value;
+
+    if (password !== confirmPassword) {
+      window.alert("Please make sure passwords match.");
+    } else if (userName === "") {
+      window.alert("Please enter a username");
+    } else if (email === "") {
+      window.alert("Please enter a valid email.");
+    } else if (password === "" && confirmPassword === "") {
+      window.alert("Please enter a valid password.");
+    } else {
+      // Make a new object representation of user
+      try {
+        const newUserRegistered = {
+          userName: userName,
+          email: email,
+          password: password,
+        };
+        // Change API state and application state
+        saveUsers(newUserRegistered);
+        sessionStorage.setItem("activeUser", newUserRegistered.id);
+
+        const userRegistered = new CustomEvent("userRegistered");
+        eventHub.dispatchEvent(userRegistered);
+      } catch {
+        window.alert("Please make sure all fields are correct.");
+      }
+    }
   }
+});
+
+eventHub.addEventListener("userRegistered", (customEvent) => {
+  registrationForm.classList.add("invisible");
 });

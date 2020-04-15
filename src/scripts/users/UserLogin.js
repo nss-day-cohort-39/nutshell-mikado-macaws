@@ -15,7 +15,7 @@ export const LoginForm = () => {
         <input type="text" id="userName"></input>
         
         <label for="user_password">Password:</label>
-        <input type="text" id="userPass"></input>
+        <input type="password" id="userPass"></input>
         
         
         
@@ -63,4 +63,11 @@ loginTarget.addEventListener("click", (clickEvent) => {
     const goRegister = new CustomEvent("getRegisterClicked");
     eventHub.dispatchEvent(goRegister);
   }
+});
+
+eventHub.addEventListener("userLoggedIn", (customEvent) => {
+  loginTarget.classList.add("invisible");
+});
+eventHub.addEventListener("getRegisterClicked", (customEvent) => {
+  loginTarget.classList.add("invisible");
 });
