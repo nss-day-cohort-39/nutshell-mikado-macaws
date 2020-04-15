@@ -1,3 +1,5 @@
-import RegisterForm from "./users/UserRegistration.js";
+import { LoginForm } from "./users/UserLogin.js";
+import "./users/UserRegistration.js";
+import { getUsers } from "./users/UsersDataProvider.js";
 
-RegisterForm()
+getUsers().then(LoginForm);
