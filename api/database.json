@@ -2,21 +2,15 @@
   "users": [
     {
       "id": 1,
-      "username": "Steve",
-      "email": "me@me.com",
-      "password": "xxxxxxxxxxxxxxxxxxxxx"
+      "userName": "placeholder",
+      "email": "placeholder",
+      "password": "placeholder"
     },
     {
-      "id": 2,
-      "username": "Dan",
-      "email": "mo@ma.com",
-      "password": "xxxxxxxxxxxxxxxxxxxxx"
-    },
-    {
-      "email": "Brad@TierStrategies.com",
-      "userName": "Brad",
-      "password": "x",
-      "id": 3
+      "userName": "daniel",
+      "email": "daniel@dan.com",
+      "password": "test",
+      "id": 2
     }
   ],
   "news": [

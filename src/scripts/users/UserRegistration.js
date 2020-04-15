@@ -15,10 +15,10 @@ eventHub.addEventListener("getRegisterClicked", (CustomEvent) => {
             
             
             <label for="user_name">Username:</label>
-            <input type="text" id="userName"></input>
+            <input type="text" id="userNameRegister"></input>
             
             <label for="user_password">Password:</label>
-            <input type="text" id="userPass"></input>
+            <input type="text" id="userPassRegister"></input>
             
             <label for="user_password_confirm">Confirm Password:</label>
             <input type="text" id="userPassConfirm"></input>
@@ -39,12 +39,12 @@ eventHub.addEventListener("getRegisterClicked", (CustomEvent) => {
 registrationForm.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.id === "Register_Button") {
     const email = document.querySelector("#userEmail").value;
-    const userName = document.querySelector("#userName").value;
-    const password = document.querySelector("#userPass").value;
+    const userName = document.querySelector("#userNameRegister").value;
+    const password = document.querySelector("#userPassRegister").value;
     // Make a new object representation of user
     const newUserRegistered = {
-      email: email,
       userName: userName,
+      email: email,
       password: password,
     };
     // Change API state and application state

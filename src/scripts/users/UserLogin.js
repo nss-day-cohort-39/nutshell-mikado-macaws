@@ -2,7 +2,6 @@ import { useUsers } from "./UsersDataProvider.js";
 
 const loginTarget = document.querySelector(".login");
 const eventHub = document.querySelector(".container");
-const users = useUsers;
 
 export const LoginForm = () => {
   const render = () => {
@@ -10,7 +9,7 @@ export const LoginForm = () => {
         <section id="loginForm">
         <form>
         <fieldset>
-     
+        
         
         <label for="user_name">Username:</label>
         <input type="text" id="userName"></input>
@@ -18,7 +17,7 @@ export const LoginForm = () => {
         <label for="user_password">Password:</label>
         <input type="text" id="userPass"></input>
         
-      
+        
         
         </fieldset> 
         </form>
@@ -34,13 +33,14 @@ export const LoginForm = () => {
 //listening for Login Button click event.
 loginTarget.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.id === "Login_Button") {
+    const users = useUsers();
     const userName = document.querySelector("#userName").value;
     const password = document.querySelector("#userPass").value;
 
     //return the user who's user name matches the entered userName and password in the input fields
     try {
       const foundUser = users.find((user) => {
-        if (user.username === userName && user.password === password) {
+        if (user.userName === userName && user.password === password) {
           return user;
         }
       });
