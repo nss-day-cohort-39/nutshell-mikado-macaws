@@ -29,7 +29,7 @@ export const getChats = () => {
     return fetch('http://localhost:3000/chats')
         .then(response => response.json())
         .then(parsedChats => {
-            notes = parsedChats
+            chats = parsedChats
         })
 }
 
