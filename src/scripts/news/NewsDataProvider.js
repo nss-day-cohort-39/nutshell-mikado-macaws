@@ -1,3 +1,7 @@
+// Tim George: This is the dataProvider for news. It gets the news. Saves the news. Deletes the news. 
+//             In both the Post and Delete the eventHub is informed that the state has changed.
+
+
 let news = [];
 
   const dispatchStateChangeEvent = () => {

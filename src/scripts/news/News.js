@@ -1,3 +1,6 @@
+//Tim George: This is the HTML representation of a News Article.
+
+
 export const newsArticle = newsObject => {
     return `
         <section class="newsArticleList">

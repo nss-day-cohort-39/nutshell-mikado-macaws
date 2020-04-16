@@ -1,3 +1,8 @@
+// //Tim George: This is the module that deals with the news form. It listens for a click and then the news form populates 
+//   with a save article button attatched to it. Event listener listens for a click on the Save Article button. When the
+//   click is heard a new object representation of the article is sent to the database along with the ACTIVEUSER id
+//   from/associated with SESSION Storage.
+
 import { saveNews } from "./NewsDataProvider.js";
 
 
@@ -5,7 +10,7 @@ const eventHub = document.querySelector(".container")
 const newsFormTarget = document.querySelector(".dashboard__newsForm");
 
 
-
+//listening for a clicked news article on NewsArticleButton.js
   eventHub.addEventListener("addNewsArticleClicked", (CustomEvent) => {
     const NewsForm = () => {
       const render = () => {
@@ -26,7 +31,7 @@ const newsFormTarget = document.querySelector(".dashboard__newsForm");
 
               </fieldset> 
               </form>
-              <button id="Save_Article">Save</button>
+              <button id="Save_Article">Save Article</button>
               </section>
               `
              }

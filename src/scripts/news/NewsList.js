@@ -1,3 +1,5 @@
+Tim George: This module is where the news is listed. 
+
 import { useNews, getNews, deleteNews } from "./NewsDataProvider.js";
 import { newsArticle } from "./News.js";
 

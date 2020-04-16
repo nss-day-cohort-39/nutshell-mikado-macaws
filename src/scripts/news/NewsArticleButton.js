@@ -1,3 +1,7 @@
+// // Tim George: This is the News Article button that is displayed on the DOM upon page render. 
+// //             New Article button becomes invisible upon click
+//                Click Event that gets dispatched to eventHub informing that newsArticle button was clicked
+
 
 
 const newsFormTarget = document.querySelector(".dashboard__newsForm");
