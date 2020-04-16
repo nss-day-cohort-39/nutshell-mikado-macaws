@@ -14,12 +14,25 @@ const eventHub = document.querySelector(".container")
 
 
 
+
+eventHub.addEventListener("userLoggedIn", (customEvent) => {
+  document.querySelector(".newEventButtonSection").classList.remove("invisible")
+})
+
+eventHub.addEventListener("userRegistered", (customEvent) => {
+  document.querySelector(".newEventButtonSection").classList.remove("invisible")
+})
+
+
+
+
 export const newEventButton = () => {
     
       eventButtonTarget.innerHTML = `
           
-      <section class="newEventButtonSection">    
-        <button id="showNewEventForm">Add New Event</button>
+      <section class="newEventButtonSection invisible"> 
+        <h3 class="EventsHeader">Events</h3>
+          <button id="showNewEventForm">Add New Event</button>
       </section>
           `
     }
@@ -31,6 +44,7 @@ export const newEventButton = () => {
             const renderNewEventForm = () => {
                 eventFormTarget.innerHTML = `
                       <section id="addEventForm">
+                      <h3 class="EventsHeader">Events</h3>
                       <form>
                       <fieldset>
                       <label for="event__name">Event Name:</label>

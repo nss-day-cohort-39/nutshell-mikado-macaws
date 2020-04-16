@@ -8,4 +8,4 @@ import { getEvents } from "./events/EventsProvider.js";
 
 getUsers().then(LoginForm).then(getFriends);
 
-getEvents().then(newEventButton);
+getEvents().then(newEventButton)
