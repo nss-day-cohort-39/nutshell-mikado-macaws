@@ -1,4 +1,11 @@
 // Author: Mark McCann
+// Module's purpose:
+// 1. Set the empty array to store data.
+// 2. Search for the DOM element so that the custom event can be dispatched.
+// 3. Make a copy of the data.
+// 4. Get the chat messages.
+// 5. Save chat messages.
+
 
 let chats = []
 
@@ -25,14 +32,7 @@ export const getChats = () => {
             notes = parsedChats
         })
 }
-// May not need delete fetch. On 4/16 Madi said that she will check w/ Steve.
-// export const deleteChat = chatId => {
-//     return fetch(`http://localhost:3000/chats/${chatId}`, {
-//         method: "DELETE"
-//     })
-//         .then(getChats)
-//         .then(dispatchStateChangeEvent)
-// }
+
 
 export const saveChat = (chatObject) => {
     return fetch('http://localhost:3000/chats', {
