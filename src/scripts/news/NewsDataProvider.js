@@ -1,5 +1,12 @@
 let news = [];
 
+  const dispatchStateChangeEvent = () => {
+    const newsStateChangedEvent = new CustomEvent("newsStateChanged");
+  
+    eventHub.dispatchEvent(newsStateChangedEvent);
+  };
+  
+
 const eventHub = document.querySelector(".container");
 
 export const useNews = () => news.slice();
@@ -22,11 +29,13 @@ export const saveNews = (news) => {
     })
       .then(getNews)
       .then(dispatchStateChangeEvent);
-  };
-
-  const dispatchStateChangeEvent = () => {
-    const usersStateChangedEvent = new CustomEvent("usersStateChanged");
-  
-    eventHub.dispatchEvent(usersStateChangedEvent);
-  };
-  
+    };
+    
+    //deletes itineraries
+    export const deleteNews = newsId => {
+      return fetch(`http://localhost:3000/news/${newsId}`, {
+        method: "DELETE"
+      })
+      .then(getNews)
+      .then(dispatchStateChangeEvent)
+}

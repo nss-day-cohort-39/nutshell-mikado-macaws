@@ -49,12 +49,14 @@ const newsFormTarget = document.querySelector(".dashboard__newsForm");
                 synopsis: articleSynopsis,
                 url: articleAddress,
                 timestamp: Date.now(),
-                userId: sessionStorage.setItem("activeUser", newUser.id),
+                
             }
     
                 // Change API state and application state 
                 saveNews(newArticle) 
             }
+            const newNewsArticle = new CustomEvent("newNewsArticle");
+        eventHub.dispatchEvent(newNewsArticle)
         })
         
-    
+        

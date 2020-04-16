@@ -9,7 +9,7 @@ export const NewsArticleButton = () => {
       newsFormTarget.innerHTML = `
           <section id="newsArticle_button">
           <h4>News</h4>
-          <button id="News_Article_Button">News Article</button>
+          <button id="News_Article_Button">New Article</button>
           </section>
           `
         }
@@ -27,6 +27,7 @@ export const NewsArticleButton = () => {
     }
   })
 
+  //hiding the News Article button when clicked
   eventHub.addEventListener("addNewsArticleClicked", (customEvent) => {
     document.getElementById("News_Article_Button").style.visibility="hidden";
   })
