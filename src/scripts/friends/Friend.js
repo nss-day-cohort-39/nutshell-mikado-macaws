@@ -1,9 +1,9 @@
-const Friend = (userObj, friendObj) => {
+const Friend = (userObj) => {
   return `
-    <article id="friend_${friendObj.id}">
+    <section id="friend_${userObj.id}">
         <p>${userObj.userName}</p>
-        <button id="deleteFriend_${friendObj.id}">Delete</button>
-    </article>
+        <button id="deleteFriend--${userObj.id}">Delete</button>
+    </section>
     `;
 };
 

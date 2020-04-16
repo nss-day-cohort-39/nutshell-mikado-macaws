@@ -3,7 +3,7 @@ let friends = [];
 const eventHub = document.querySelector(".container");
 
 const dispatchStateChangeEvent = () => {
-  const friendStateChangedEvent = new CustomEvent("dashboard__friendsList");
+  const friendStateChangedEvent = new CustomEvent("friendStateChanged");
 
   eventHub.dispatchEvent(friendStateChangedEvent);
 };
@@ -14,13 +14,13 @@ const dispatchStateChangeEvent = () => {
 export const useFriends = () => friends.slice();
 
 /*
-    Get the state of the notes from the API into the application
+    Get the state of the friends from the API into the application
 */
 export const getFriends = () => {
   return fetch("http://localhost:3000/friends")
     .then((response) => response.json())
     .then((parsedFriends) => {
-      notes = parsedFriends;
+      friends = parsedFriends;
     });
 };
 
