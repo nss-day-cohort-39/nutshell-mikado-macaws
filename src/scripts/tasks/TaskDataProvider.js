@@ -30,7 +30,7 @@ export const saveTasks = (tasks) => {
 };
 
 export const deleteTasks = TaskId => {
-  return fetch(`http://localhost:8088/tasks/${Tasks.id}`, {
+  return fetch(`http://localhost:3000/tasks/${TaskId}`, {
       method: "DELETE"
   })
       .then(getTasks)
