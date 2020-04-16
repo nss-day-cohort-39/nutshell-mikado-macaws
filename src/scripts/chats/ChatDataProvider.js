@@ -1,4 +1,4 @@
-let notes = []
+let chats = []
 
 const eventHub = document.querySelector(".container")
 
@@ -11,35 +11,35 @@ const dispatchStateChangeEvent = () => {
 /*
     Allow other modules to get a copy of the application state
 */
-export const useNotes = () => notes.sort((c, n) => n.timestamp - c.timestamp).slice()
+export const useChats = () => chats.sort((c, n) => n.timestamp - c.timestamp).slice()
 
 /*
     Get the state of the notes from the API into the application
 */
-export const getNotes = () => {
-    return fetch('http://localhost:8088/notes')
+export const getChats = () => {
+    return fetch('http://localhost:3000/chats')
         .then(response => response.json())
-        .then(parsedNotes => {
-            notes = parsedNotes
+        .then(parsedChats => {
+            notes = parsedChats
         })
 }
 
-export const deleteNote = noteId => {
-    return fetch(`http://localhost:8088/notes/${noteId}`, {
+export const deleteChat = chatId => {
+    return fetch(`http://localhost:3000/chats/${chatId}`, {
         method: "DELETE"
     })
-        .then(getNotes)
+        .then(getChats)
         .then(dispatchStateChangeEvent)
 }
 
-export const saveNote = note => {
-    return fetch('http://localhost:8088/notes', {
+export const saveChat = chat => {
+    return fetch('http://localhost:3000/chats', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(note)
+        body: JSON.stringify(chat)
     })
-        .then(getNotes)
+        .then(getChats)
         .then(dispatchStateChangeEvent)
 }
