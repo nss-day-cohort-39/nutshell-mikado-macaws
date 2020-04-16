@@ -26,7 +26,7 @@ export const useChats = () => chats.slice()
     Get the state of the notes from the API into the application
 */
 export const getChats = () => {
-    return fetch('http://localhost:3000/chats')
+    return fetch('http://localhost:3000/chat')
         .then(response => response.json())
         .then(parsedChats => {
             chats = parsedChats
@@ -35,7 +35,7 @@ export const getChats = () => {
 
 
 export const saveChat = (chatObject) => {
-    return fetch('http://localhost:3000/chats', {
+    return fetch('http://localhost:3000/chat', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
