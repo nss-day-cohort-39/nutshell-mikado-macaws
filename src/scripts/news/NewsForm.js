@@ -46,7 +46,7 @@ const newsFormTarget = document.querySelector(".dashboard__newsForm");
       const articleTitle = document.querySelector("#articleTitle").value;
       const articleSynopsis = document.querySelector("#synopsis").value;
       const articleAddress = document.querySelector("#articleAddress").value;
-      let data = sessionStorage.getItem('activeUser')
+      let activeUser = sessionStorage.getItem('activeUser')
   
      // Make a new object representation of article information
             const newArticle = {
@@ -54,7 +54,7 @@ const newsFormTarget = document.querySelector(".dashboard__newsForm");
                 synopsis: articleSynopsis,
                 url: articleAddress,
                 timestamp: Date.now(),
-                userId: parseInt(data)
+                userId: parseInt(activeUser)
               
                }
   

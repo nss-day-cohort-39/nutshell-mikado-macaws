@@ -1,4 +1,6 @@
-Tim George: This module is where the news is listed. 
+// Tim George: This module is where the news is rendered. There is an eventlistener listening for the delete button on each
+//             individual new article being clicked. Also an event listener listening to the hub for the state being changed by 
+//             a card being deleted, so that the proper news populates.
 
 import { useNews, getNews, deleteNews } from "./NewsDataProvider.js";
 import { newsArticle } from "./News.js";
@@ -13,7 +15,7 @@ eventHub.addEventListener("newsStateChanged", customEvent => {
     renderNews()
 })
 
-//Listens for the delet button being clicked then renders new news list
+//Listens for the delete button being clicked then renders new news list
 newsListTarget.addEventListener("click", clickEvent => {
     if (clickEvent.target.id.startsWith("deleteNews--")) {
         const [prefix, id] = clickEvent.target.id.split("--")
@@ -22,6 +24,7 @@ newsListTarget.addEventListener("click", clickEvent => {
     }
 })
 
+//renders the news
 export const renderNews = () => {
 
     getNews().then(() => {
