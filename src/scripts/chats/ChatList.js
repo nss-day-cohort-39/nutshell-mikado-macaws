@@ -1,7 +1,11 @@
 // Author: Mark McCann
 
 // Module's purpose:
-// 1. Querry the DOM
+// 1. Querry the DOM element of .dashboard__chat
+// 2. Call the chat message html rep
+// 3. Loop through the array and convert each to an html rep
+// 4. Find the userId of the message and dispatch to the userObj
+// 5. Function that makes the chatMessageList
 
 import { useChats } from "./ChatDataProvider.js"
 import { singleChatMessage } from "./Chat.js"

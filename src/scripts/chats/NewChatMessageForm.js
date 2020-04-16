@@ -1,4 +1,7 @@
 // Author: Mark McCann
+// Module's purpose:
+// 1. Render's form html
+// 2. Dispatches the custom event of the submit button 
 
 
 const eventHub = document.querySelector(".container")
@@ -11,7 +14,6 @@ export const chatMessageForm = () => {
         </section>
 `
 }
-// Dispatches the custom event of the submit button 
 eventHub.addEventListener("click", (e) => {
     if (e.target.id === "chat__form_button") {
         const chatMessage = document.querySelector(".chat__form_input").value
