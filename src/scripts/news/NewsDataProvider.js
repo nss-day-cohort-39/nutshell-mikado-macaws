@@ -1,4 +1,4 @@
-let users = [];
+let news = [];
 
 const eventHub = document.querySelector(".container");
 

@@ -1,0 +1,32 @@
+
+
+const newsFormTarget = document.querySelector(".dashboard__newsForm");
+const eventHub = document.querySelector(".container")
+
+//displays New Aricle Button and news on render (for now)
+export const NewsArticleButton = () => {
+    const render = () => {
+      newsFormTarget.innerHTML = `
+          <section id="newsArticle_button">
+          <h4>News</h4>
+          <button id="News_Article_Button">News Article</button>
+          </section>
+          `
+        }
+  render()
+  }
+
+
+
+
+//listening for a click event on the dashboard. When clicked it creates a new custom event called "addNews" and dispatches to the eventHub
+  newsFormTarget.addEventListener("click", (clickEvent) => {
+    if (clickEvent.target.id === "News_Article_Button") {
+      const addNews = new CustomEvent("addNewsArticleClicked")
+      eventHub.dispatchEvent(addNews)
+    }
+  })
+
+  eventHub.addEventListener("addNewsArticleClicked", (customEvent) => {
+    document.getElementById("News_Article_Button").style.visibility="hidden";
+  })
