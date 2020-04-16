@@ -1,4 +1,4 @@
-// Authored by Mark McCann
+// Author: Mark McCann
 
 let chats = []
 
