@@ -1,3 +1,5 @@
+// Authored by Mark McCann
+
 let chats = []
 
 const eventHub = document.querySelector(".container")
@@ -11,7 +13,7 @@ const dispatchStateChangeEvent = () => {
 /*
     Allow other modules to get a copy of the application state
 */
-export const useChats = () => chats.sort((c, n) => n.timestamp - c.timestamp).slice()
+export const useChats = () => chats.slice()
 
 /*
     Get the state of the notes from the API into the application
@@ -23,22 +25,22 @@ export const getChats = () => {
             notes = parsedChats
         })
 }
+// May not need delete fetch. On 4/16 Madi said that she will check w/ Steve.
+// export const deleteChat = chatId => {
+//     return fetch(`http://localhost:3000/chats/${chatId}`, {
+//         method: "DELETE"
+//     })
+//         .then(getChats)
+//         .then(dispatchStateChangeEvent)
+// }
 
-export const deleteChat = chatId => {
-    return fetch(`http://localhost:3000/chats/${chatId}`, {
-        method: "DELETE"
-    })
-        .then(getChats)
-        .then(dispatchStateChangeEvent)
-}
-
-export const saveChat = chat => {
+export const saveChat = (chatObject) => {
     return fetch('http://localhost:3000/chats', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(chat)
+        body: JSON.stringify(chatObject)
     })
         .then(getChats)
         .then(dispatchStateChangeEvent)
