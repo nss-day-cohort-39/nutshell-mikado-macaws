@@ -30,7 +30,7 @@ export const saveNews = (news) => {
       .then(getNews)
       .then(dispatchStateChangeEvent);
     };
-    
+
     //deletes itineraries
     export const deleteNews = newsId => {
       return fetch(`http://localhost:3000/news/${newsId}`, {

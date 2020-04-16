@@ -22,7 +22,7 @@ const newsFormTarget = document.querySelector(".dashboard__newsForm");
               <input type="text" id="synopsis"></input>
               
               <label for="article_address">URL:</label>
-              <input type="password" id="articleAddress"></input>
+              <input type="text" id="articleAddress"></input>
 
               </fieldset> 
               </form>
@@ -41,7 +41,7 @@ const newsFormTarget = document.querySelector(".dashboard__newsForm");
       const articleTitle = document.querySelector("#articleTitle").value;
       const articleSynopsis = document.querySelector("#synopsis").value;
       const articleAddress = document.querySelector("#articleAddress").value;
-      
+      let data = sessionStorage.getItem('activeUser')
   
      // Make a new object representation of article information
             const newArticle = {
@@ -49,12 +49,14 @@ const newsFormTarget = document.querySelector(".dashboard__newsForm");
                 synopsis: articleSynopsis,
                 url: articleAddress,
                 timestamp: Date.now(),
-                
-            }
-    
+                userId: parseInt(data)
+              
+               }
+  
                 // Change API state and application state 
                 saveNews(newArticle) 
             }
+            //letting the eventHub know that there is a new article that needs to populate
             const newNewsArticle = new CustomEvent("newNewsArticle");
         eventHub.dispatchEvent(newNewsArticle)
         })
