@@ -1,16 +1,24 @@
 let events = [];
 
-const eventHub = document.querySelector(".container");
+const eventHub = document.querySelector(".container")
 
-export const useEvents = () => events.slice();
+const dispatchStateChangeEvent = () => {
+    const eventsStateChangedEvent = new CustomEvent("eventsStateChanged")
+  
+    eventHub.dispatchEvent(eventsStateChangedEvent)
+  }
+
+
+
+  export const useEvents = () => events.slice();
 
 export const getEvents = () => {
   return fetch("http://localhost:3000/events")
     .then((response) => response.json())
     .then((parsedEvents) => {
       events = parsedEvents;
-    });
-};
+    })
+}
 
 export const saveEvents = (events) => {
   return fetch("http://localhost:3000/events", {
@@ -21,8 +29,8 @@ export const saveEvents = (events) => {
     body: JSON.stringify(events),
   })
     .then(getEvents)
-    .then(dispatchStateChangeEvent);
-};
+    .then(dispatchStateChangeEvent)
+}
 
 
 export const deleteEvents = eventId => {
@@ -33,8 +41,5 @@ export const deleteEvents = eventId => {
         .then(dispatchStateChangeEvent)
 }
 
-const dispatchStateChangeEvent = () => {
-  const eventsStateChangedEvent = new CustomEvent("eventsStateChanged");
 
-  eventHub.dispatchEvent(eventsStateChangedEvent);
-};
+
