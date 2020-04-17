@@ -1,3 +1,5 @@
+//MARC McCANN
+
 let friends = [];
 
 const eventHub = document.querySelector(".container");

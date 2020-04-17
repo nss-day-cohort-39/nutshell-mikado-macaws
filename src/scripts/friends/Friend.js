@@ -1,3 +1,5 @@
+//DANIEL FUQUA
+
 const Friend = (userObj) => {
   return `
     <section id="friend_${userObj.id}">
