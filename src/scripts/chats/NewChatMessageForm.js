@@ -17,7 +17,7 @@ export const chatMessageForm = () => {
 };
 eventHub.addEventListener("click", (e) => {
     if (e.target.id === "chat__form_button") {
-        const chatMessage = e.target.value;
+        const chatMessage = document.querySelector(".chat__form_input").value;
         const newChatObject = {
             userId: parseInt(sessionStorage.getItem("activeUser")),
             message: chatMessage,
