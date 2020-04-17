@@ -84,7 +84,7 @@ registrationForm.addEventListener("click", (clickEvent) => {
     }
   }
 });
-
+//when user clicks register button the registration form will disapear.
 eventHub.addEventListener("userRegistered", (customEvent) => {
   registrationForm.classList.add("invisible");
 });
