@@ -64,10 +64,11 @@ loginTarget.addEventListener("click", (clickEvent) => {
     eventHub.dispatchEvent(goRegister);
   }
 });
-
+//when user logs in the login form will disapear.
 eventHub.addEventListener("userLoggedIn", (customEvent) => {
   loginTarget.classList.add("invisible");
 });
+//when user chooses to register, the login form will disapear.
 eventHub.addEventListener("getRegisterClicked", (customEvent) => {
   loginTarget.classList.add("invisible");
 });
