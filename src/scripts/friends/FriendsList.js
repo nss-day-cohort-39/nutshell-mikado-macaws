@@ -6,20 +6,26 @@ import AddFriendForm from "./AddFriendForm.js";
 const contentTarget = document.querySelector(".dashboard__friendsList");
 const eventHub = document.querySelector(".container");
 
-const FriendsList = () => {
-  const users = useUsers();
-  const friendships = useFriends();
+export const FriendsList = () => {
+  // if statement insures friends list will render upon refresh of page. (As long as SS item is set to a user's id.)
+  if (sessionStorage.getItem("activeUser")) {
+    // will need to find users that the active user is friends with.
+    const users = useUsers();
+    const friendships = useFriends();
 
-  const render = () => {
-    const activeUserId = parseInt(sessionStorage.getItem("activeUser"));
-    const arrayOfActiveUsersFriendships = friendships.filter(
-      (friendship) => friendship.activeId === activeUserId
-    );
-    const arrayOfFriends = arrayOfActiveUsersFriendships.map((friendship) => {
-      return users.find((user) => user.id === friendship.userId);
-    });
-
-    contentTarget.innerHTML = `
+    const render = () => {
+      // store the active users ID.
+      const activeUserId = parseInt(sessionStorage.getItem("activeUser"));
+      // store the friend objects related to the active user.
+      const arrayOfActiveUsersFriendships = friendships.filter(
+        (friendship) => friendship.activeId === activeUserId
+      );
+      // store the user objects that the active user is friedns with.
+      const arrayOfFriends = arrayOfActiveUsersFriendships.map((friendship) => {
+        return users.find((user) => user.id === friendship.userId);
+      });
+      // pass each user object in arrayOfFriends through the Friend funtion, creating an html representation for each one.
+      contentTarget.innerHTML = `
     <article class="friendsList">
         <h2>Friends List</h2>
             ${arrayOfFriends
@@ -35,22 +41,23 @@ const FriendsList = () => {
     <button id="addFriendButton">Add Friend</button>
     <div id="addFriendDropdown"></div>
     `;
-  };
+    };
 
-  render();
+    render();
+  }
 };
-
+// When a user clicks the login button the friends list will render.
 eventHub.addEventListener("userLoggedIn", (customEvent) => {
   FriendsList();
 });
-
+// When a user clicks the add friend button a form renders.
 contentTarget.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.id === "addFriendButton") {
     const friendSelectTarget = document.querySelector("#addFriendDropdown");
     friendSelectTarget.innerHTML = AddFriendForm();
   }
 });
-
+// When user clicks on delete button it will delete corresponding friend object.
 contentTarget.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.id.startsWith("deleteFriend--")) {
     const [prefix, friendId] = clickEvent.target.id.split("--");
@@ -64,7 +71,7 @@ contentTarget.addEventListener("click", (clickEvent) => {
   }
 });
 
-// choose a friend to save to users friends list
+// When user chooses a username from the dropdown a new friend object is added to the database.
 contentTarget.addEventListener("change", (changeEvent) => {
   if (changeEvent.target.id === "friendDropdown") {
     const chosenUserId = parseInt(changeEvent.target.value);
@@ -80,6 +87,7 @@ contentTarget.addEventListener("change", (changeEvent) => {
   }
 });
 
+// Anytime the state of the friend data changes the friends list will re-render.
 eventHub.addEventListener("friendStateChanged", (customEvent) => {
   FriendsList();
 });
