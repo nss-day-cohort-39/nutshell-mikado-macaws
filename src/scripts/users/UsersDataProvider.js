@@ -1,3 +1,9 @@
+/*
+Author: Brad Cowart, Mark Mcann, Tim George, Daniel Hero, Daniel Fuqua
+Purpose: This module provides database access methods store and retrieve
+info related to logon and registrations. 
+*/
+
 let users = [];
 
 const eventHub = document.querySelector(".container");

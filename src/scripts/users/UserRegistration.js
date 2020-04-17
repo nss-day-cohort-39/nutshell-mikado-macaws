@@ -1,3 +1,9 @@
+/*
+Author: Brad Cowart, Mark Mcann, Tim George, Daniel Hero, Daniel Fuqua
+Purpose: This module displays the registration form and links to logic
+to add this info to the database. 
+*/
+
 import { saveUsers, useUsers } from "./UsersDataProvider.js";
 
 const registrationForm = document.querySelector(".register");
