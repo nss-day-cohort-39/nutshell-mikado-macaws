@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 /*
 Author: Brad Cowart
 Purpose: This module calls the functions to add and delete tasks. 
 */
 
-=======
->>>>>>> master
 import { useTasks,deleteTasks} from "./TaskDataProvider.js";
 import { TaskHTML } from "./TaskHTML.js";
 
@@ -36,11 +33,7 @@ export const TaskList = () => {
      deleteTasks(TaskId).then(
          () => {
              const updatedTasks = useTasks()
-<<<<<<< HEAD
              render(updatedTasks)
-=======
-             render(updatedTasks())
->>>>>>> master
          }
      )
   }
