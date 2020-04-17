@@ -10,8 +10,6 @@ const contentTarget = document.querySelector(".dashboard__taskList")
 const eventHub = document.querySelector(".container")
 
 // Get the tasks
-//let TasksToDisplay = useTasks()
-//render(TasksToDisplay)
 
 const render = TasksToRender => {
     contentTarget.innerHTML = TasksToRender.map(

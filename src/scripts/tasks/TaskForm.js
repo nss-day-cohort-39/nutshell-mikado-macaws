@@ -10,7 +10,6 @@ import { saveTasks, useTasks } from "./TaskDataProvider.js";
 const taskForm = document.querySelector(".dashboard__taskForm");
 const eventHub = document.querySelector(".container");
 
-//eventHub.addEventListener("getTaskClicked", (CustomEvent) => {
  export const TaskForm = () => {
     const render = () => {
         taskForm.innerHTML = `
@@ -44,16 +43,7 @@ eventHub.addEventListener("click", (clickEvent) => {
         complete=false
       }
     
-    // if (password !== confirmPassword) {
-    //   window.alert("Please make sure passwords match.");
-    // } else if (userName === "") {
-    //   window.alert("Please enter a username");
-    // } else if (email === "") {
-    //   window.alert("Please enter a valid email.");
-    // } else if (password === "" && confirmPassword === "") {
-    //   window.alert("Please enter a valid password.");
-    // } else {
-      // Make a new object representation of user
+    
       try {
         const newTask = {
           task: task,
@@ -73,6 +63,3 @@ eventHub.addEventListener("click", (clickEvent) => {
   }
 )
 
-//eventHub.addEventListener("userRegistered", (customEvent) => {
-  //registrationForm.classList.add("invisible");
-//});
