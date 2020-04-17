@@ -1,3 +1,9 @@
+/*
+Author: Brad Cowart, Mark Mcann, Tim George, Daniel Hero, Daniel Fuqua
+Purpose: This module displays the login form and 
+links to logic to add this info to the database. 
+*/
+
 import { useUsers } from "./UsersDataProvider.js";
 
 const loginTarget = document.querySelector(".login");
@@ -64,10 +70,11 @@ loginTarget.addEventListener("click", (clickEvent) => {
     eventHub.dispatchEvent(goRegister);
   }
 });
-
+//when user logs in the login form will disapear.
 eventHub.addEventListener("userLoggedIn", (customEvent) => {
   loginTarget.classList.add("invisible");
 });
+//when user chooses to register, the login form will disapear.
 eventHub.addEventListener("getRegisterClicked", (customEvent) => {
   loginTarget.classList.add("invisible");
 });
